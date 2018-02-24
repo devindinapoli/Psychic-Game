@@ -9,28 +9,33 @@ var userGuess = null;
 
 var toBeGuessed = lettersOfAlphabet[Math.floor(Math.random() * lettersOfAlphabet.length)];
 
-document.onkeyup = function(event){
+document.onkeyup = function (event) {
 
-var userGuess = event.key.toLowerCase();  
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    
+    if (guesses.indexOf(userGuess) < 0 && lettersOfAlphabet.indexOf(userGuess) >= 0) {
+        guesses[guesses.length] = userGuess;
+        guessesLeft--;
+    }
 
-if (guesses.indexOf(userGuess) < 0 && lettersOfAlphabet.indexOf(userGuess) >= 0){
+    if (userGuess == toBeGuessed) {
+       
+        wins++;
+        guessesLeft = 9;
+        guesses = [];
+        toBeGuessed;
+    }
 
-    guesses[guesses.length] = userGuess;
-    guesses--;
+
+    if (guessesLeft == 0) {
+     
+        losses++;
+        guessesLeft = 9;
+        guesses = [];
+        toBeGuessed;
+    }
+
+    var html = "<p><h1>Psychic Game</h1></p>" + "<p>What Letter Am I Thinking Of?</p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guessesLeft + "</p>" + "<p>Guesses So Far: " + guesses + "</p>";
+
+    document.querySelector("#game").innerHTML = html;
 }
-else if (userGuess === toBeGuessed){
-    wins++;
-    guessesLeft = 9;
-    guesses = [];
-    toBeGuessed;
-
-}
-
-else if (guessesLeft === 0){
-    losses++;
-    guessesLeft = 9;
-    guesses: [];
-    toBeGuessed; 
-}
-
-};
