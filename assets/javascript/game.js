@@ -19,7 +19,7 @@ document.onkeyup = function (event) {
     }
 
     if (userGuess == toBeGuessed) {
-       
+        alert("You Win!");
         wins++;
         guessesLeft = 9;
         guesses = [];
@@ -29,7 +29,7 @@ document.onkeyup = function (event) {
 
 
     if (guessesLeft == 0) {
-     
+        alert("Better Luck Next Time!");
         losses++;
         guessesLeft = 9;
         guesses = [];
