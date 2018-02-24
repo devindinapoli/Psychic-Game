@@ -23,7 +23,8 @@ document.onkeyup = function (event) {
         wins++;
         guessesLeft = 9;
         guesses = [];
-        toBeGuessed;
+        toBeGuessed  = lettersOfAlphabet[Math.floor(Math.random() * lettersOfAlphabet.length)];
+
     }
 
 
@@ -32,7 +33,8 @@ document.onkeyup = function (event) {
         losses++;
         guessesLeft = 9;
         guesses = [];
-        toBeGuessed;
+        toBeGuessed  = lettersOfAlphabet[Math.floor(Math.random() * lettersOfAlphabet.length)];
+
     }
 
     var html = "<p><h1>Psychic Game</h1></p>" + "<p>What Letter Am I Thinking Of?</p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>" + "<p>Guesses Left: " + guessesLeft + "</p>" + "<p>Guesses So Far: " + guesses + "</p>";
